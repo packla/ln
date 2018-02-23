@@ -1,0 +1,109 @@
+html,
+body {
+    margin: 0;
+    background-color: #e7ebec;
+    font-family: 'open sans', sans-serif;
+    font-size: 14px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+.default-form { max-width: 400px; padding: 10px }
+
+.text-center { text-align: center; }
+
+.line { height: 1px; width: 100%; background: #dcdcdc; margin: 20px 0; }
+
+.clearfix { clear: both; }
+
+.hidden { display: none }
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: #868686;
+    margin-bottom: 7px;
+    display: inline-block;
+}
+
+.form-group .invalid { border-color: #e03838 !important; color: red; }
+
+.form-group input[type="text"], .form-group input[type="email"], .form-group textarea {
+    width: 100%;
+    margin: 0;
+    border: 1px solid #ccc;
+    padding: .5rem .75rem;
+    display: block;
+    outline: none;
+}
+
+.form-group input[type="file"] { display: block; }
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus { border-color: #2196f3; }
+
+.btn, button {
+    cursor: pointer;
+    border: 0;
+    background: #247bbf;
+    outline: none;
+    text-decoration: none;
+    color: #fff;
+    padding: 7px 13px;
+    display: inline-block;
+}
+
+/**/
+
+#installationPage { width: 570px; margin: 70px auto 0 auto; }
+
+#installationPage { color: #607d8b; }
+
+#installationPage form {
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 0 7px 0 #bdbfbf;
+    border-radius: 2px;
+}
+
+.error { color: tomato; }
+
+.db-group > label {
+    display: block;
+}
+
+.db-group div.item {
+    width: 33.3%;
+    padding-right: 10px;
+    float: left;
+}
+
+.db-group div.item:nth-child(4) {
+    padding-right: 0;
+}
+
+.file_upload {
+    position: relative;
+    overflow: hidden;
+}
+
+.file_upload input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(20);
+    letter-spacing: 10em;
+    -ms-transform: scale(20);
+    opacity: 0;
+    cursor: pointer
+}

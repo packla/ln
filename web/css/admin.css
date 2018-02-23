@@ -1,0 +1,84 @@
+html,
+body {
+    margin: 0;
+    background-color: #e7ebec;
+    font-family: 'open sans', sans-serif;
+    font-size: 14px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    box-sizing: inherit;
+}
+.default-form { max-width:400px; padding: 10px}
+.text-center { text-align: center; }
+.line { height: 1px; width: 100%; background: #dcdcdc; margin: 20px 0; }
+.clearfix { clear: both; }
+.hidden { display: none }
+.form-group {
+    margin-bottom: 10px;
+}
+.form-group label {
+    font-size: 12px;
+    color: #868686;
+    margin-bottom: 7px;
+    display: inline-block;
+}
+.form-group .invalid { border-color: #e03838 !important; color: red; }
+.form-group input[type="text"], .form-group input[type="email"], .form-group textarea {
+    width: 100%;
+    margin: 0;
+    border: 1px solid #ccc;
+    padding: .5rem .75rem;
+    display: block;
+    outline: none;
+}
+.form-group input[type="file"] { display: block; }
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus { border-color: #2196f3; }
+.btn, button {
+    cursor: pointer;
+    border: 0;
+    background: #247bbf;
+    outline: none;
+    text-decoration: none;
+    color: #fff;
+    padding: 7px 13px;
+    display: inline-block;
+}
+/**/
+
+.wrapper {
+    padding: 0 8px;
+}
+#domainsGrid table {
+    border-spacing: 0;
+    margin: auto;
+}
+#domainsGrid table td, #domainsGrid table th {
+    padding: 4px 16px;
+    border-right: 1px solid #aaa;
+}
+#domainsGrid table td:last-child, #domainsGrid table th:last-child {
+    border-right: none;
+}
+#domainsGrid table td .form-group {
+    margin-bottom: 0;
+}
+.pagination{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.pagination li{
+    display: inline-block;
+}
+.pagination li a, .pagination li span{
+    display: block;
+    padding: 3px 4px;
+}
+.wrapper .edit-data table td{
+    vertical-align: top;
+    padding-right: 15px;
+}
