@@ -14,6 +14,7 @@
     <li>Директория скриптов <b>/web/js</b></li>
     <li>Директория изображений <b>/web/images</b></li>
     <li>Файл шаблона <b>/views/site/index.php</b></li>
+    <li>Шаблон ссылок на поддомены <b>/views/site/links.php</b></li>
     <li>Базовый URL для файлов стилей, скриптов, изображений: <b>"/"</b>. Например: <b>/css/style.css</b></li>
 </ul>
 </body>
