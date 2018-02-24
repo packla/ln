@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\entities\DomainsAr;
 use app\entities\SettingsAr;
 use app\helpers\MainHelper;
+use app\models\AuthModel;
 use app\models\Installation;
 use app\models\TableCreator;
 use yii;
@@ -95,6 +96,17 @@ class SiteController extends Controller
 
     public function actionAdmin()
     {
+        if (! AuthModel::checkAuth()) {
+            header('WWW-Authenticate: Basic realm="My Realm"');
+            header('HTTP/1.0 401 Unauthorized');
+            exit;
+        }
+        if (! Installation::isDbConfigured()) {
+            return $this->redirect('installation');
+        }
+        if (null === $settings = SettingsAr::getInstance()) {
+            return $this->redirect('installation');
+        }
         $install  = new Installation();
         $settings = SettingsAr::getInstance();
         if (Yii::$app->request->post() && $install->update(Yii::$app->request->post())) {
