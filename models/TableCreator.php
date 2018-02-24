@@ -15,6 +15,7 @@ class TableCreator
             Yii::$app->db->createCommand()->createTable(SettingsAr::tableName(), [
                 'id'          => Yii::$app->db->getSchema()->createColumnSchemaBuilder(Schema::TYPE_PK),
                 'companyName' => Yii::$app->db->getSchema()->createColumnSchemaBuilder(Schema::TYPE_STRING)->notNull(),
+                'linksCount'  => Yii::$app->db->getSchema()->createColumnSchemaBuilder(Schema::TYPE_INTEGER)->defaultValue(2),
             ], 'DEFAULT CHARACTER SET=utf8 DEFAULT COLLATE=utf8_general_ci ENGINE=InnoDB')->execute();
 
             Yii::$app->db->createCommand()->createTable(DomainsAr::tableName(), [

@@ -37,6 +37,11 @@ $this->title = 'Установка';
     </div>
     <div class="line"></div>
     <div class="form-group">
+        <label>Количество ссылок на поддомены: *</label>
+        <?= Html::textInput('linksCount', 2, ['type' => 'number']) ?>
+    </div>
+    <div class="line"></div>
+    <div class="form-group">
         <button type="submit">Генерировать</button>
     </div>
     <?= Html::endForm(); ?>

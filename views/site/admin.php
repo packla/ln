@@ -20,6 +20,10 @@ $this->title = 'Админ панель';
                         <label>Название компании *</label>
                         <?= Html::textInput('companyName', $companyName, ['required' => 'required']) ?>
                     </div>
+                    <div class="form-group">
+                        <label>Количество ссылок на поддомены *</label>
+                        <?= Html::textInput('linksCount', $linksCount, ['type' => 'number']) ?>
+                    </div>
                 </td>
                 <td>
                     <div class="form-group">

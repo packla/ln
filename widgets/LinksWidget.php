@@ -3,6 +3,7 @@
 namespace app\widgets;
 
 use app\entities\DomainsAr;
+use app\entities\SettingsAr;
 use app\helpers\MainHelper;
 use Yii;
 use yii\base\Widget;
@@ -12,7 +13,8 @@ class LinksWidget extends Widget
 {
     public function run()
     {
-        $domains = $this->getDomainsList();
+        $settings = SettingsAr::getInstance();
+        $domains = $this->getDomainsList($settings);
         $names   = explode('.', Yii::$app->request->serverName);
         if (count($names) === 2) {
             $main = $names[0] . '.' . $names[1];
@@ -34,13 +36,13 @@ class LinksWidget extends Widget
         return $this->render('links', ['domains' => $links]);
     }
 
-    protected function getDomainsList()
+    protected function getDomainsList($settings)
     {
         $current = MainHelper::getCurrentDomain();
-        $list    = DomainsAr::find()->where(['>', 'id', $current->id])->limit(2)->all();
+        $list    = DomainsAr::find()->where(['>', 'id', $current->id])->limit((int)$settings->linksCount)->all();
 
-        if (2 > count($list)) {
-            $need    = 2 - count($list);
+        if ($settings->linksCount > count($list)) {
+            $need    = $settings->linksCount - count($list);
             $another = DomainsAr::find()->orderBy('id ASC')->limit($need)->all();
             $list    = ArrayHelper::merge($list, $another);
         }

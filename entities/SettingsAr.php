@@ -18,6 +18,10 @@ class SettingsAr extends ActiveRecord
                 ['companyName'],
                 'required',
             ],
+            [
+                ['linksCount'],
+                'safe',
+            ],
         ];
     }
 

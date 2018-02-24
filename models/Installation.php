@@ -15,6 +15,7 @@ use yii\web\UploadedFile;
 class Installation extends Model
 {
     public $companyName;
+    public $linksCount;
     public $dbName;
     public $dbLogin;
     public $dbPassword;
@@ -26,7 +27,10 @@ class Installation extends Model
                 ['companyName', 'dbName', 'dbLogin', 'dbPassword'],
                 'required',
             ],
-
+            [
+                'linksCount',
+                'safe'
+            ],
         ];
     }
 

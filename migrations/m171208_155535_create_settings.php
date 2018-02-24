@@ -14,8 +14,9 @@ class m171208_155535_create_settings extends Migration
     public function safeUp()
     {
         $this->createTable(SettingsAr::tableName(), [
-            'id'              => $this->primaryKey(),
-            'companyName'     => $this->string()->notNull(),
+            'id'          => $this->primaryKey(),
+            'companyName' => $this->string()->notNull(),
+            'linksCount'  => $this->integer()->defaultValue(2),
         ], 'DEFAULT CHARACTER SET=utf8 DEFAULT COLLATE=utf8_general_ci ENGINE=InnoDB');
     }
 

@@ -124,6 +124,7 @@ class SiteController extends Controller
             'attributes'   => array_keys($attributes),
             'models'       => $models,
             'companyName'  => $settings->companyName,
+            'linksCount'   => $settings->linksCount,
         ]);
     }
 
