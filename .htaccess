@@ -12,3 +12,35 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^.*$ web/index.php
 </IfModule>
+
+<ifModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
+
+<ifModule mod_headers.c>
+	#кэш css, js на год
+	<FilesMatch "\.(js|css|txt)$">
+		Header set Cache-Control "max-age=31536000"
+	</FilesMatch>
+	#кэшировать изображения и видео на год
+	<FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png)$">
+		Header set Cache-Control "max-age=31536000"
+	</FilesMatch>
+</ifModule>
+
+<ifModule mod_expires.c>
+	ExpiresActive On
+	#по умолчанию кеш на год
+	ExpiresDefault "access plus 31536000 seconds"
+	#кэшировать флэш и изображения на год
+	ExpiresByType image/x-icon "access plus 31536000 seconds"
+	ExpiresByType image/jpeg "access plus 31536000 seconds"
+	ExpiresByType image/png "access plus 31536000 seconds"
+	ExpiresByType image/gif "access plus 31536000 seconds"
+	ExpiresByType application/x-shockwave-flash "access plus 31536000 seconds"
+	#кэшировать css, javascript на год
+	ExpiresByType text/css "access plus 31536000 seconds"
+	ExpiresByType text/javascript "access plus 31536000 seconds"
+	ExpiresByType application/javascript "access plus 31536000 seconds"
+	ExpiresByType application/x-javascript "access plus 31536000 seconds"
+</ifModule>
