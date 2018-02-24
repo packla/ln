@@ -24,7 +24,7 @@ $this->title = 'Админ панель';
                 <td>
                     <div class="form-group">
                         <label>Данные для поддоменов</label>
-                        <?= Html::fileInput('subdomainsFile', null) ?>
+                        <?= Html::fileInput('files[]', null) ?>
                         <small>Формат параметров: %param%</small><br />
                         <small>Обязательный параметр - %domain%</small>
                     </div>
