@@ -40,6 +40,7 @@ class Installation extends Model
         if (! $this->setDbAccesses()) {
             return false;
         }
+        TableCreator::execute();
 
         $settings = new SettingsAr();
         $settings->setAttributes($this->getAttributes());
@@ -47,7 +48,6 @@ class Installation extends Model
         $transaction = Yii::$app->db->beginTransaction();
 
         try {
-            TableCreator::execute();
             if ($settings->save() && $this->saveDomains($files) && $this->uploadTemplates($files)) {
                 $transaction->commit();
                 return true;
@@ -63,16 +63,16 @@ class Installation extends Model
     public function update($data)
     {
         $this->setAttributes($data);
-        $this->subdomainsFile = UploadedFile::getInstanceByName('subdomainsFile');
-        $settings             = SettingsAr::getInstance();
+        $files    = UploadedFile::getInstancesByName('files');
+        $settings = SettingsAr::getInstance();
         $settings->setAttributes($this->getAttributes());
 
         $transaction = Yii::$app->db->beginTransaction();
         try {
             $result = true;
-            if (null !== $this->subdomainsFile) {
+            if (! empty($files)) {
                 $result = (bool)DomainsAr::deleteAll();
-                $result = $result && $this->saveDomains();
+                $result = $result && $this->saveDomains($files);
             }
             if ($settings->save() && $result) {
                 $transaction->commit();

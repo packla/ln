@@ -83,7 +83,6 @@ class SiteController extends Controller
 
     public function actionInstallation()
     {
-        // todo конфигурация базы. Только потом установка(?) Либо получить доступы к базе, изменить компонент DB и вск ок!
         if (Installation::isDbConfigured() && null !== $settings = SettingsAr::getInstance()) {
             return $this->redirect('/');
         }
