@@ -6,6 +6,7 @@ use yii\db\ActiveRecord;
 
 class SettingsAr extends ActiveRecord
 {
+    protected static $instance;
     public static function tableName()
     {
         return '{{%settings}}';
@@ -27,6 +28,9 @@ class SettingsAr extends ActiveRecord
 
     public static function getInstance()
     {
-        return static::find()->one();
+        if (null === static::$instance) {
+            static::$instance = static::find()->one();
+        }
+        return static::$instance;
     }
 }
