@@ -47,6 +47,7 @@ class Installation extends Model
         $transaction = Yii::$app->db->beginTransaction();
 
         try {
+            TableCreator::execute();
             if ($settings->save() && $this->saveDomains($files) && $this->uploadTemplates($files)) {
                 $transaction->commit();
                 return true;
