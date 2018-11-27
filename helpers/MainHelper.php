@@ -3,6 +3,7 @@
 namespace app\helpers;
 
 use app\entities\DomainsAr;
+use app\models\UserIp;
 use Yii;
 
 class MainHelper
@@ -17,6 +18,12 @@ class MainHelper
                 $domain = DomainsAr::getMainDomain();
             }
             return $domain;
+        }
+        if (null !== $userCity = UserIp::getUserCity()) {
+            if (null !== $domain = DomainsAr::getDomainByCity($userCity)) {
+                return $domain;
+            }
+
         }
         return DomainsAr::getMainDomain();
     }

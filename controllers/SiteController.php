@@ -8,6 +8,7 @@ use app\helpers\MainHelper;
 use app\models\AuthModel;
 use app\models\Installation;
 use app\models\TableCreator;
+use app\models\UserIp;
 use yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;

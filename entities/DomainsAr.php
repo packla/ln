@@ -48,6 +48,11 @@ class DomainsAr extends ActiveRecord
         return static::find()->where(['domain' => $domain])->one();
     }
 
+    public static function getDomainByCity($city)
+    {
+        return static::find()->where(['like', 'LOWER(domain)', strtolower($city)])->one();
+    }
+
     public function isMain()
     {
         return $this->domain === static::MAIN_DOMAIN;
@@ -56,8 +61,8 @@ class DomainsAr extends ActiveRecord
     public function getParam($name)
     {
         $data = $this->getArrayData();
-        $key = '%' . $name . '%';
-        if (! array_key_exists($key, $data)) {
+        $key  = '%' . $name . '%';
+        if (!array_key_exists($key, $data)) {
             return '';
         }
         return $data[$key];
