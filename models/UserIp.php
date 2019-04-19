@@ -13,12 +13,13 @@ class UserIp
             if ($ip == '127.0.0.1') {
                 $ip = '217.118.83.216';
             }
-            $url = 'http://ip-api.com/json/' . $ip;
+            $url = 'https://ipinfo.io/' . $ip . '/json';
             $res = file_get_contents($url);
             $obj = json_decode($res);
-            if ($obj->city) {
+            if (isset($obj->city)) {
                 return $obj->city;
             }
+
             return null;
         } catch (\Exception $exception) {
             return null;

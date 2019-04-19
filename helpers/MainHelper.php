@@ -10,21 +10,28 @@ class MainHelper
 {
     public static function getCurrentDomain()
     {
-        $host     = 'http://' . Yii::$app->request->hostName;
+        $host = 'http://' . Yii::$app->request->hostName;
         $segments = parse_url($host);
-        $names    = explode('.', $segments['host']);
+        $names = explode('.', $segments['host']);
         if (3 === count($names)) {
             if (null === $domain = DomainsAr::getDomain($names[0])) {
                 $domain = DomainsAr::getMainDomain();
             }
+
             return $domain;
         }
         if (null !== $userCity = UserIp::getUserCity()) {
-            if (null !== $domain = DomainsAr::getDomainByCity($userCity)) {
+            $domain = DomainsAr::find()->where([
+                'like',
+                'LOWER(domain)',
+                strtolower($userCity)
+            ])->one();
+            if (null !== $domain) {
                 return $domain;
             }
 
         }
+
         return DomainsAr::getMainDomain();
     }
 }
